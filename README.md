@@ -23,3 +23,6 @@
   * Users can click on each indicator and the SVG below with a bar chart will update
 enter/exit selections?
 * Similarity to Bubble Chart and Bar Chart
+  * Bubble Chart displayed the indicators for a specified, race, city, and gender
+  * Bar Chart displays the specified indicator for all major cities
+* When the user changes filter settings, the circles will transition to be bigger or smaller
