@@ -1,7 +1,9 @@
 # -3c
 :3c
 #### Description of data sets
-
+* [hyperlink](https://data.world/health/big-cities-health/workspace/file?filename=Big_Cities_Health_Data_Inventory.csv)
+* Data from [data.world](data.world) about the most significant health issues faced in the biggest cities in the United States.
+* This dataset shows the issues that are most prominent in various cities, which can give some ideas about prioritizing solutions and research. Many of these issues have wide-reaching effects, so data for prioritization is beneficial to many.
 #### Explanation, in broad strokes if necessary, of how you aim to make this data come alive.
 * What will be shown:
   * Filters that can be applied to get specific data including: gender, race, year, and city. 
