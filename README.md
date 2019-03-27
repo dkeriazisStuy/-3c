@@ -2,16 +2,17 @@
 :3c
 #### Description of data sets
 * [link to csv](https://data.world/health/big-cities-health/workspace/file?filename=Big_Cities_Health_Data_Inventory.csv)
-* Data from [data.world](data.world) about the most significant health issues faced in the biggest cities in the United States.
-* This dataset shows the issues that are most prominent in various cities, which can give some ideas about prioritizing solutions and research. Many of these issues have wide-reaching effects, so data for prioritization is beneficial to many.
+* Data from [data.world](https://data.world) about the most significant health issues faced in the biggest cities in the United States.
+* This dataset shows the issues that are most prominent in various cities, which can give some ideas about prioritizing solutions and research.
+  Many of these issues have wide-reaching effects, so data for prioritization is beneficial to many.
 #### Explanation, in broad strokes if necessary, of how you aim to make this data come alive.
 * What will be shown:
-  * Filters that can be applied to get specific data including: gender, race, year, and city. 
-  * A bubble of map with all of the information if no filters are selected, but the graph will change to reflect changes in filters. 
-   * The bubbles will have different colors to reflect different 
+  * Filters that can be applied to get specific data including: gender, race, year, and city.
+  * A bubble of map with all of the information if no filters are selected, but the graph will change to reflect changes in filters.
+   * The bubbles will have different colors to reflect different
 * Interactions
   * The user can hover over the cicles to show percentages
-  * When a bubble is clicked on, it shows another graph that compares how the data differs in big cities. 
+  * When a bubble is clicked on, it shows another graph that compares how the data differs in big cities.
 * Questions our visualization allows the user to explore
   * How prevalent are certain diseases like HIV in certain big cities?
   * In what group of people are these diseases most prevalent in?
