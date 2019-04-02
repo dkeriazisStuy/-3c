@@ -14,7 +14,15 @@ pd8
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 ==============================================================
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\
-huiminW -- 2019-04-1 23:29
+huiminW -- 2019-04-01 23:29
 ---------------------------------------------------------------
 Updated README to address add rev_B issues
+---------------------------------------------------------------
+
+huiminW -- 2019-04-02 02:04
+---------------------------------------------------------------
+Added a small bubble example that doesn't work yet. 
+The bubbles appear in the html but their radii are still NaN
+and I think that is due to my confusion with children and how the
+data is translated to values to layout the bubble
 ---------------------------------------------------------------
