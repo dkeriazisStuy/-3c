@@ -13,16 +13,17 @@ Notes
 */
 console.log('wee');
 d3.csv("./Big_Cities_Health_Data_Inventory.csv").then(function(data){
-    //console.log(data[0]);
+    //console.log( Object.keys(data[0]) );
 
+    var keys = [ "Indicator Category", "Indicator", "Year", "Gender", "Race/ Ethnicity", "Place"];
     var places = [];
     for (var i = 0; i < data.length; i++){
         if (!places.includes(data[i]["Place"])){
             places.push(data[i]["Place"]);
         }
     }
-    console.log("place");
-    console.log(places);
+    //console.log("place");
+    //console.log(places);
 
     // test stuff
     // // all indicator categories
@@ -45,24 +46,26 @@ d3.csv("./Big_Cities_Health_Data_Inventory.csv").then(function(data){
     // console.log("filter for new york");
     // console.log(b);
 
-    var chart = d3.select(".chart")
-        .attr("width", 500)
-        .attr("height", 500)
+    //var chart = d3.select(".chart")
+    //    .attr("width", 500)
+    //    .attr("height", 500)
 
-    var dropdown = chart
-        .insert("select", "svg")
-        .on("change", dropdownChange);
+    var select = d3.select('body')
+        .text('Place ')
+        .append('select')
+            .attr('class', 'select')
+        .on('change', change)
 
-    dropdown.selectAll("option")
-        .data(places)
-        .enter().append("option")
-            .attr("value", function(d){ return d; })
-        .text(function(d){
-            return d[0];
-        })
+    var options = select.selectAll('option')
+        .data(places).enter()
+        .append('option')
+            .text( function(d) {return d;} );
 
-    var dropdownChange = function(){}
-
+    function change(){
+        selectValue = d3.select('select').property('value')
+        var info = filter(data, 'Place', selectValue);
+        console.log(info);
+    };
 
 });
 
