@@ -7,12 +7,12 @@
   Many of these issues have wide-reaching effects, so data for prioritization is beneficial to many.
 #### Explanation, in broad strokes if necessary, of how you aim to make this data come alive.
 * What will be shown:
-  * Filters that can be applied to get specific data including: gender, race, year, and city.
-  * A bubble of map with all of the information if no filters are selected, but the graph will change to reflect changes in filters.
-   * The bubbles will have different colors to reflect different
+  * An initial form to filter the identity of the user which includes year, gender, race, and city.
+  * After inputting the filters, a bubble map with each bubble, representing each disease in the specified city, for a specified year, gender, and race, will be shown. The radius of the bubble would be proportional to the estimated percentage of the city that has each disease, which we will retrieve from the dataset
+  * Each bubble represents a different disease so in order to help with the user experience, we plan to have each bubble to be a different color
 * Interactions
-  * The user can hover over the cicles to show percentages
-  * When a bubble is clicked on, it shows another graph that compares how the data differs in big cities.
+  * The user can hover over the circles to show percentages
+  * When a bubble is clicked on, it shows another graph that compares how the data differs in big cities (with the previous filters on year, race, city, and gender still applied.
 * Questions our visualization allows the user to explore
   * How prevalent are certain diseases like HIV in certain big cities?
   * In what group of people are these diseases most prevalent in?
