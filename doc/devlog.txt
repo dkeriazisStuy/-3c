@@ -38,3 +38,9 @@ Worked on backend for filtering data
 Worked on d3 selectors
 ---------------------------------------------------------------
 
+huiminW -- 2019-04-02 14:04
+---------------------------------------------------------------
+Add color and click feature that returns indicator
+---------------------------------------------------------------
+
+
