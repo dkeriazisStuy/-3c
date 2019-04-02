@@ -15,34 +15,55 @@ console.log('wee');
 d3.csv("./Big_Cities_Health_Data_Inventory.csv").then(function(data){
     //console.log(data[0]);
 
-
-    // all indicator categories
-    var cat_vals = [];
+    var places = [];
     for (var i = 0; i < data.length; i++){
-        if (!cat_vals.includes(data[i]["Indicator Category"])){
-            cat_vals.push(data[i]["Indicator Category"]);
-        }
-    }
-    console.log("Indicator Category");
-    console.log(cat_vals);
-
-    var cat_vals = [];
-    for (var i = 0; i < data.length; i++){
-        if (!cat_vals.includes(data[i]["Place"])){
-            cat_vals.push(data[i]["Place"]);
+        if (!places.includes(data[i]["Place"])){
+            places.push(data[i]["Place"]);
         }
     }
     console.log("place");
-    console.log(cat_vals);
+    console.log(places);
 
-    // test filter by specific value in a column
-    var a = filter(data, "Indicator Category", "Cancer");
-    console.log("filter for cancer");
-    console.log(a);
+    // test stuff
+    // // all indicator categories
+    // var cat_vals = [];
+    // for (var i = 0; i < data.length; i++){
+    //     if (!cat_vals.includes(data[i]["Indicator Category"])){
+    //         cat_vals.push(data[i]["Indicator Category"]);
+    //     }
+    // }
+    // console.log("Indicator Category");
+    // console.log(cat_vals);
 
-    var b = filter(data, "Place", "New York, NY");
-    console.log("filter for new york");
-    console.log(b);
+
+    // // test filter by specific value in a column
+    // var a = filter(data, "Indicator Category", "Cancer");
+    // console.log("filter for cancer");
+    // console.log(a);
+
+    // var b = filter(data, "Place", "New York, NY");
+    // console.log("filter for new york");
+    // console.log(b);
+
+    var chart = d3.select(".chart")
+        .attr("width", 500)
+        .attr("height", 500)
+
+    var dropdown = chart
+        .insert("select", "svg")
+        .on("change", dropdownChange);
+
+    dropdown.selectAll("option")
+        .data(places)
+        .enter().append("option")
+            .attr("value", function(d){ return d; })
+        .text(function(d){
+            return d[0];
+        })
+
+    var dropdownChange = function(){}
+
+
 });
 
 
