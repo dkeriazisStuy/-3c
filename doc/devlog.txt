@@ -26,3 +26,11 @@ The bubbles appear in the html but their radii are still NaN
 and I think that is due to my confusion with children and how the
 data is translated to values to layout the bubble
 ---------------------------------------------------------------
+
+huiminW -- 2019-04-02 13:51
+---------------------------------------------------------------
+Finish working bubble example
+---------------------------------------------------------------
+
+
+
