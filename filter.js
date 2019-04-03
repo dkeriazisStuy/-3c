@@ -1,75 +1,66 @@
-/* columns
-Indicator category
-Indicator
-Year
-Gender
-Race/ Ethnicity
-Value
-Place
-BCHC Requested Methodology
-Source
-Methods
-Notes
-*/
-console.log('wee');
 d3.csv("./Big_Cities_Health_Data_Inventory.csv").then(function(data){
     //console.log( Object.keys(data[0]) );
 
-    var keys = [ "Indicator Category", "Indicator", "Year", "Gender", "Race/ Ethnicity", "Place"];
-    var places = [];
-    for (var i = 0; i < data.length; i++){
-        if (!places.includes(data[i]["Place"])){
-            places.push(data[i]["Place"]);
+    var keys = ["Year", "Gender", "Race/ Ethnicity", "Place"];
+    var body = d3.select('body');
+    
+    keys.forEach(function(category){ 
+        //console.log(category);
+        var unique_vals = [];
+        for (var i = 0; i < data.length; i++){
+            if (!unique_vals.includes(data[i][category])){
+                unique_vals.push(data[i][category]);
+            }
         }
-    }
-    //console.log("place");
-    //console.log(places);
+        console.log(unique_vals);
 
-    // test stuff
-    // // all indicator categories
-    // var cat_vals = [];
-    // for (var i = 0; i < data.length; i++){
-    //     if (!cat_vals.includes(data[i]["Indicator Category"])){
-    //         cat_vals.push(data[i]["Indicator Category"]);
-    //     }
-    // }
-    // console.log("Indicator Category");
-    // console.log(cat_vals);
+        var select = body
+            .text(category + ' ')
+            .append('select')
+                .attr('class', 'select')
+            .on('change', change)
 
+        var options = select.selectAll('option')
+            .data(unique_vals).enter()
+            .append('option')
+                .text( function(d) {return d;} );
 
-    // // test filter by specific value in a column
-    // var a = filter(data, "Indicator Category", "Cancer");
-    // console.log("filter for cancer");
-    // console.log(a);
+        function change(){
+            selectValue = d3.select('select').property('value')
+            var info = filter(data, 'Place', selectValue);
+            console.log(info);
+        };
 
-    // var b = filter(data, "Place", "New York, NY");
-    // console.log("filter for new york");
-    // console.log(b);
+    });
 
-    //var chart = d3.select(".chart")
-    //    .attr("width", 500)
-    //    .attr("height", 500)
+    //var places = [];
+    //for (var i = 0; i < data.length; i++){
+    //    if (!places.includes(data[i]["Place"])){
+    //        places.push(data[i]["Place"]);
+    //    }
+    //}
 
-    var select = d3.select('body')
-        .text('Place ')
-        .append('select')
-            .attr('class', 'select')
-        .on('change', change)
+    //var select = d3.select('body')
+    //    .text('Place ')
+    //    .append('select')
+    //        .attr('class', 'select')
+    //    .on('change', change)
 
-    var options = select.selectAll('option')
-        .data(places).enter()
-        .append('option')
-            .text( function(d) {return d;} );
+    //var options = select.selectAll('option')
+    //    .data(places).enter()
+    //    .append('option')
+    //        .text( function(d) {return d;} );
 
-    function change(){
-        selectValue = d3.select('select').property('value')
-        var info = filter(data, 'Place', selectValue);
-        console.log(info);
-    };
+    //function change(){
+    //    selectValue = d3.select('select').property('value')
+    //    var info = filter(data, 'Place', selectValue);
+    //    console.log(info);
+    //};
 
 });
 
 
+// return all unique values of a key
 var filter = function(data, category, value){
     var clean = [];
     for (var i = 0; i < data.length; i++){
