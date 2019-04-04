@@ -3,7 +3,31 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
 
     var keys = ["Year", "Gender", "Race/ Ethnicity", "Place"];
     var body = d3.select('#filter');
+
+    var selections = body.selectAll('select')
+        .data(keys).enter()
+        .append('text').text(function(k){return k})
+        .append('select')
+            .attr('class', 'select')
+        .on('change', function(){
+            selectValue = d3.select('select').property('value')
+            var info = filter(data, category, selectValue);
+            //console.log(info);
+        })
+
+    var options = selections.selectAll('option')
+        .data(getChoices(data, function(k){
+            console.log('k');
+            console.log(k);
+            return k;}))
+        .enter()
+        .append('option')
+            .text(function(d){ return d; })
+
+    //console.log(options);
     
+
+    /*
     keys.forEach(function(category){ 
         //console.log(category);
         var unique_vals = [];
@@ -12,7 +36,7 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
                 unique_vals.push(data[i][category]);
             }
         }
-        console.log(unique_vals);
+        //console.log(unique_vals);
 
         var select = body
             .text(category + ' ')
@@ -25,13 +49,16 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
             .append('option')
                 .text( function(d) {return d;} );
 
+        console.log(options);
+
         function change(){
             selectValue = d3.select('select').property('value')
-            var info = filter(data, 'Place', selectValue);
+            var info = filter(data, category, selectValue);
             console.log(info);
         };
 
     });
+    */
 
     //var places = [];
     //for (var i = 0; i < data.length; i++){
@@ -59,8 +86,19 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
 
 });
 
+// return list of different choices in a category
+var getChoices = function(data, choice){
+    var unique_vals = [];
+    for (var i = 0; i < data.length; i++){
+        if (!unique_vals.includes(data[i][choice])){
+            unique_vals.push(data[i][choice]);
+        }
+    }
 
-// return all unique values of a key
+    return unique_vals;
+};
+
+// return all elements with value in category
 var filter = function(data, category, value){
     var clean = [];
     for (var i = 0; i < data.length; i++){
@@ -69,4 +107,8 @@ var filter = function(data, category, value){
         }
     }
     return clean;
+<<<<<<< Updated upstream:app/static/filter.js
 }
+=======
+};
+>>>>>>> Stashed changes:filter.js
