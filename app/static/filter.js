@@ -107,8 +107,4 @@ var filter = function(data, category, value){
         }
     }
     return clean;
-<<<<<<< Updated upstream:app/static/filter.js
-}
-=======
 };
->>>>>>> Stashed changes:filter.js
