@@ -6,18 +6,24 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
 
     var selections = body.selectAll('select')
         .data(keys).enter()
-        .append('text').text(function(k){return k})
+        .append('text').text(function(k){console.log(k); return k;})
         .append('select')
             .attr('class', 'select')
-        .on('change', function(){
-            selectValue = d3.select('select').property('value')
-            var info = filter(data, category, selectValue);
-            //console.log(info);
-        })
+            .on('change', function(){
+                // get all data values corresponding to key 
+                selectValue = d3.select('select').property('value')
+                console.log('===filter===');
+                var info = filter(data, category, selectValue);
+                console.log(info);
+                console.log('===filter===');
+            });
+    var a = body.selectAll('text')
+        
+    console.log(a);
 
+    // get unique values for each key
     var options = selections.selectAll('option')
         .data(getChoices(data, function(k){
-            console.log('k');
             console.log(k);
             return k;}))
         .enter()
@@ -94,6 +100,8 @@ var getChoices = function(data, choice){
             unique_vals.push(data[i][choice]);
         }
     }
+    console.log(choice);
+    console.log(unique_vals);
 
     return unique_vals;
 };
