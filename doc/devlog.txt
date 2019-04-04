@@ -47,3 +47,12 @@ jackLu -- 2019-04-02 16:57
 ---------------------------------------------------------------
 Worked on d3+html selectors and filtering data based on selector
 ---------------------------------------------------------------
+
+huiminW -- 2019-04-04 13:54
+---------------------------------------------------------------
+Grouped bubble chart and filter together in flask app with PM DK
+Made new css file in static
+Moved html and js files to static
+Aligned filter to the left and bubbles to the right
+---------------------------------------------------------------
+

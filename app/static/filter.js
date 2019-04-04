@@ -1,8 +1,8 @@
-d3.csv("./Big_Cities_Health_Data_Inventory.csv").then(function(data){
+d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
     //console.log( Object.keys(data[0]) );
 
     var keys = ["Year", "Gender", "Race/ Ethnicity", "Place"];
-    var body = d3.select('body');
+    var body = d3.select('#filter');
     
     keys.forEach(function(category){ 
         //console.log(category);
@@ -70,4 +70,3 @@ var filter = function(data, category, value){
     }
     return clean;
 }
-
