@@ -21,7 +21,6 @@ var toolTip = d3.select('#bubble')
                 .style("color", "white")
 
 var showTooltip = function(d) {
-
     toolTip.transition().duration(200)
     toolTip.style("opacity", 1)
             .html("Disease: " + d.data.Name + "<br/>" + "Count: " + d.data.Count)

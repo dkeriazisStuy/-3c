@@ -1,7 +1,15 @@
 #filter {
     float: left;
-} 
+}
 
 #bubble {
     float: right;
+}
+
+.bar {
+    fill: #ac59ff;
+}
+
+.bar:hover {
+    fill: #265cff;
 }

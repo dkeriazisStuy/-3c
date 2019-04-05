@@ -1,4 +1,4 @@
-var svg = d3.select("svg"),
+var svg = d3.select("#bar"),
 margin = {
  top: 20,
  right: 20,
@@ -14,7 +14,7 @@ var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
 
 var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("test.csv").then((data) => {
+d3.csv("/static/test.csv").then((data) => {
     return data.map((d) => {
 	console.log("data");
 	console.log(d);
@@ -53,7 +53,7 @@ d3.csv("test.csv").then((data) => {
    .append("text")
      .attr("stroke", "black")
      .attr("transform", "rotate(-90)")
-	  .attr("x",0) 
+	  .attr("x",0)
 
 	  .attr("y",-15)
      .attr("dy", "0.71em")
