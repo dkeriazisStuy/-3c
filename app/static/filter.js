@@ -4,45 +4,64 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
     var keys = ["Year", "Gender", "Race/ Ethnicity", "Place"];
     var body = d3.select('#filter');
 
-    var selections = body.selectAll('select')
-        .data(keys).enter()
-        .append('text').text(function(k){console.log(k); return k;})
-        .append('select')
+    for (var i = 0; i < keys.length; i++){
+        body.append('text').text(keys[i]);
+        var selection = body.append('select')
             .attr('class', 'select')
+            .attr('name', keys[i])
             .on('change', function(){
                 // get all data values corresponding to key 
-                selectValue = d3.select('select').property('value')
+                selectValue = selection.property('value')
+                category = selection.attr('name');
+
                 console.log('===filter===');
                 var info = filter(data, category, selectValue);
                 console.log(info);
                 console.log('===filter===');
             });
-    var a = body.selectAll('text')
-        
-    console.log(a);
-
-    // get unique values for each key
-    var options = selections.selectAll('option')
-        .data(getChoices(data, function(k){
-            console.log(k);
-            return k;}))
-        .enter()
-        .append('option')
+        body.append('br')
+        // get unique values for each key
+        var options = selection.selectAll('option');
+        options.append('option')
+            .attr('selected', 'selected')
+            .text('test');
+        options.data(getChoices(data, keys[i])).enter()
+            .append('option')
             .text(function(d){ return d; })
+    }
+
+    // var selections = body.selectAll('select')
+    // console.log(selections);
+    //    .data(keys).enter()
+    //    .append('text').text(function(k){console.log(k); return k;})
+    //    .append('select')
+    //        .attr('class', 'select')
+    //        .on('change', function(){
+    //            // get all data values corresponding to key 
+    //            selectValue = d3.select('select').property('value')
+    //            console.log('===filter===');
+    //            var info = filter(data, category, selectValue);
+    //            console.log(info);
+    //            console.log('===filter===');
+    //        });
+    //var a = body.selectAll('text')
+    //    
+    //console.log(a);
+
 
     //console.log(options);
-    
+
 
     /*
     keys.forEach(function(category){ 
-        //console.log(category);
+    //console.log(category);
         var unique_vals = [];
         for (var i = 0; i < data.length; i++){
             if (!unique_vals.includes(data[i][category])){
                 unique_vals.push(data[i][category]);
             }
         }
-        //console.log(unique_vals);
+    //console.log(unique_vals);
 
         var select = body
             .text(category + ' ')
@@ -100,8 +119,6 @@ var getChoices = function(data, choice){
             unique_vals.push(data[i][choice]);
         }
     }
-    console.log(choice);
-    console.log(unique_vals);
 
     return unique_vals;
 };
@@ -114,5 +131,9 @@ var filter = function(data, category, value){
             clean.push(data[i]);
         }
     }
+    console.log('--------------------------------------------------');
+    console.log(category);
+    console.log(value);
+    console.log('--------------------------------------------------');
     return clean;
 };
