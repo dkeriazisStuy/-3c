@@ -56,3 +56,8 @@ Moved html and js files to static
 Aligned filter to the left and bubbles to the right
 ---------------------------------------------------------------
 
+huiminW -- 2019-04-04 22:31
+---------------------------------------------------------------
+Added tooltip for bubbles and a transition for their border
+when mouse is hovered over it
+---------------------------------------------------------------

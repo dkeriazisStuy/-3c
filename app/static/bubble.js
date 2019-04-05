@@ -10,6 +10,35 @@ dataset = {
     {"Name":"Firearm Related","Count":0.0137},
     {"Name":"Homicide","Count":0.0116}]
 };
+var toolTip = d3.select('#bubble')
+                .append("tip")
+                .style("opacity", 0)
+                .attr("class", "tooltip")
+                .style("position", "absolute")
+                .style("background-color", "black")
+                .style("border-radius", "5px")
+                .style("padding", "10px")
+                .style("color", "white")
+
+var showTooltip = function(d) {
+
+    toolTip.transition().duration(200)
+    toolTip.style("opacity", 1)
+            .html("Disease: " + d.data.Name + "<br/>" + "Count: " + d.data.Count)
+            .style("left", d3.event.pageX + 20 + "px")
+            .style("top", d3.event.pageY + 20 + "px")
+}
+
+var moveTooltip = function(d) {
+    toolTip.style("left", d3.event.pageX + 20 + "px")
+    toolTip.style("top", d3.event.pageY + 20 +"px")
+}
+
+var hideTooltip = function(d) {
+    toolTip.transition().duration(200)
+            .style("opacity", 0)
+}
+
 
 var diameter = 600;
 var color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -39,10 +68,10 @@ var node = svg.selectAll(".node")
         return "translate(" + d.x + "," + d.y + ")";
     });
 
-node.append("title")
-    .text(function(d) {
-        return d.data.Name + ": " + d.value;
-    });
+//node.append("title")
+//    .text(function(d) {
+//        return d.data.Name + ": " + d.value;
+//    });
 
 node.append("circle")
     .attr("r", function(d) {
@@ -51,13 +80,29 @@ node.append("circle")
     .style("fill", function(d, i){
         return color(i);
     })
-    // .on('mouseover', function(d) {
-        // tooltip.text(d.name);
-        // return tooltip.style('visibility', 'visible');
-    // })
+    .attr("stroke", "black")
+    .attr("stroke-width", 0)
     .on('click', function(d) {
         console.log(d.data.Name);
-    });
+    })
+    .on('mouseover', function(d) {
+        d3.select(this)
+            .transition()
+            .duration(100)
+            .attr('stroke-width', 2);
+        return showTooltip(d);})
+    .on('mousemove', function(d) {
+        d3.select(this)
+            .transition()
+            .duration(100)
+            .attr('stroke-width', 2);
+        return moveTooltip(d);})
+    .on('mouseout', function(d) {
+        d3.select(this)
+            .transition()
+            .duration(100)
+            .attr('stroke-width', 0);
+        return hideTooltip(d);})
 
 node.append("text")
     .attr("dy", ".2em")
