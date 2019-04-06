@@ -16,10 +16,10 @@ var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + mar
 
 d3.csv("/static/test.csv").then((data) => {
     return data.map((d) => {
-	console.log("data");
-	console.log(d);
-	console.log("values")
-	console.log(d.Value);
+	//console.log("data");
+	//console.log(d);
+	//console.log("values")
+	//console.log(d.Value);
           d.Value = +d.Value;
 
           return d;
