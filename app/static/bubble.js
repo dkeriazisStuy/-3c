@@ -69,7 +69,7 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
 var everything = function(d) {
     var toolTip = d3.select('#bubble')
                     .append("tip")
-                    .style("opacity", 0)
+                    .style("opacity", 1)
                     .attr("class", "tooltip")
                     .style("position", "absolute")
                     .style("background-color", "black")
@@ -80,7 +80,7 @@ var everything = function(d) {
     var showTooltip = function(d) {
         //console.log(d)
         toolTip.transition().duration(200)
-        toolTip.style("opacity", 0)
+        toolTip.style("opacity", 1)
                 .html("Indicator: " + d.data.Indicator + "<br/>" + "Value: " + d.data.Value)
                 .style("left", d3.event.pageX + 20 + "px")
                 .style("top", d3.event.pageY + 20 + "px")
@@ -156,24 +156,24 @@ var everything = function(d) {
             //graphData([d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race]);
             //return[d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race];
         })
-        .on('mouseover', function(d) {
+    bub.on('mouseover', function(d) {
             d3.select(this)
                 .transition()
                 .duration(100)
                 .attr('stroke-width', 2);
-            return showTooltip(d);})
-        .on('mousemove', function(d) {
+            return showTooltip(d);});
+    bub.on('mousemove', function(d) {
             d3.select(this)
                 .transition()
                 .duration(100)
                 .attr('stroke-width', 2);
-            return moveTooltip(d);})
-        .on('mouseout', function(d) {
+            return moveTooltip(d);});
+    bub.on('mouseout', function(d) {
             d3.select(this)
                 .transition()
                 .duration(100)
                 .attr('stroke-width', 0);
-            return hideTooltip(d);})
+            return hideTooltip(d);});
 
     node.append("text")
         .attr("dy", ".2em")
