@@ -1,11 +1,25 @@
 var raw = [];
+var body = d3.select('#filter');
+var table = body.append("table");
+var keys = ["Year", "Gender", "Race", "Place"];
 d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
     // var b = d3.select('#filter').select('button');
     // console.log('b');
     // console.log(b);
     // console.log('b');
 
-    var body = d3.select('#filter');
+    for (var i = 0; i < keys.length; i++){
+        row = table.append('tr');
+        row.append('td').text(keys[i]);
+        var selection = row.append('td').append('select')
+            .attr('class', 'select')
+            .attr('name', keys[i])
+        var options = selection.selectAll('option');
+        options.data(getChoices(data, keys[i])).enter()
+            .append('option')
+            .text(function(d){ return d; })
+    };
+
     var b = body.append('button')
         .attr('type', 'button')
         .attr('id', 'button')
@@ -19,9 +33,13 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
         };
         d3.select(".bubble").remove();
         everything();
-        grap(dset);
-
+        //grap(dset);
     });
+
+    var chart = d3.select('body')
+        chart.append('br')
+        chart.append('table')
+            .attr('id', 'chart');
 });
 
 var everything = function(d) {

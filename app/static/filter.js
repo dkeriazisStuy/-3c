@@ -1,21 +1,21 @@
-var body = d3.select('#filter');
-var table = body.append("table");
-var keys = ["Year", "Gender", "Race", "Place"];
+//var body = d3.select('#filter');
+//var table = body.append("table");
+//var keys = ["Year", "Gender", "Race", "Place"];
 
 d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
 
     // 4 filters
-    for (var i = 0; i < keys.length; i++){
-        row = table.append('tr');
-        row.append('td').text(keys[i]);
-        var selection = row.append('td').append('select')
-            .attr('class', 'select')
-            .attr('name', keys[i])
-        var options = selection.selectAll('option');
-        options.data(getChoices(data, keys[i])).enter()
-            .append('option')
-            .text(function(d){ return d; })
-    };
+    //for (var i = 0; i < keys.length; i++){
+    //    row = table.append('tr');
+    //    row.append('td').text(keys[i]);
+    //    var selection = row.append('td').append('select')
+    //        .attr('class', 'select')
+    //        .attr('name', keys[i])
+    //    var options = selection.selectAll('option');
+    //    options.data(getChoices(data, keys[i])).enter()
+    //        .append('option')
+    //        .text(function(d){ return d; })
+    //};
 
     // submit button
     // body.append('br');
