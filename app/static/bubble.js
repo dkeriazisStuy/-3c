@@ -17,7 +17,7 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
                 raw = {
                     "children": dset
                 };
-                    var svg = d3.select("svg");
+                d3.select(".bubble").remove();
                 everything();
     });
     var test = {
@@ -36,8 +36,7 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
 });
 
 var everything = function(d) {
-
-    var toolTip = d3.select('#bubble')
+    var toolTip = d3.select('.bubble')
                     .append("tip")
                     .style("opacity", 0)
                     .attr("class", "tooltip")
@@ -74,11 +73,11 @@ var everything = function(d) {
         .size([diameter, diameter])
         .padding(1.5);
 
-    var svg = d3.select("#bubble")
-        .append("svg")
-        .attr("width", diameter)
-        .attr("height", diameter)
-        .attr("class", "bubble");
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", diameter)
+                .attr("height", diameter)
+                .attr("class", "bubble");
 
     var nodes = d3.hierarchy(raw)
         .sum(function(d) { 
