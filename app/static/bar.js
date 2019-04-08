@@ -8,27 +8,35 @@ margin = {
 width = +svg.attr("width") - margin.left - margin.right,
 height = +svg.attr("height") - margin.top - margin.bottom;
 
-
+var va= 0;
 var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
     y = d3.scaleLinear().rangeRound([height, 0]);
 
 var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("/static/test.csv").then((data) => {
+var grap = function(indic){
+  console.log('b');
+  console.log(indic);
+d3.csv("/static/Big_Cities_Health_Data_Inventory.csv").then((data) => {
     return data.map((d) => {
 	//console.log("data");
 	//console.log(d);
 	//console.log("values")
 	//console.log(d.Value);
-          d.Value = +d.Value;
+        for (var i = 0; i<d.Value.length; i++){
+          if (d.Indicator= indic)
+            va+= d.Value
+            console.log(va);
+        }
+          //d.Value = +d.Value;
 
           return d;
         });
         	})
 
   .then((data) => {
-      x.domain(data.map(function(d) { return d.Indicator; }));
-      y.domain([0, d3.max(data, function(d) {return (d.Value); })]);
+      x.domain(data.map(function(d) { return d.Place; }));
+      y.domain([0, d3.max(data, function(d) {return (va); })]);
 
   g.append("g")
        .attr("class", "axis axis--x")
@@ -64,8 +72,10 @@ d3.csv("/static/test.csv").then((data) => {
 	  .data(data)
 	  .enter().append("rect")
 	  .attr("class", "bar")
-	  .attr("x", function(d) { return x(d.Indicator); })
-	  .attr("y", function(d) { return y(d.Value); })
+	  .attr("x", function(d) { return x(d.Place); })
+	  .attr("y", function(d) { return y(va); })
 	  .attr("width", x.bandwidth())
-	  .attr("height", function(d) { return  height- y(d.Value); });
+	  .attr("height", function(d) { return  height- y(va); });
 });
+}
+//grap("AIDS Diagnoses Rate (Per 100,000 people)")

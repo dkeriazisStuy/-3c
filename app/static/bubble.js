@@ -1,10 +1,10 @@
 var raw = [];
-d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) { 
+d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
     // var b = d3.select('#filter').select('button');
     // console.log('b');
     // console.log(b);
     // console.log('b');
-    
+
     var body = d3.select('#filter');
     var b = body.append('button')
                 .attr('type', 'button')
@@ -13,7 +13,7 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
                 .on('click', function() {
                     dset = getData(data).slice(0);
                     //console.log('??');
-                    console.log(dset);
+                  //  console.log(dset);
                 raw = {
                     "children": dset
                 };
@@ -34,7 +34,7 @@ var everything = function(d) {
                     .style("color", "white")
 
     var showTooltip = function(d) {
-        console.log(d)
+        //console.log(d)
         toolTip.transition().duration(200)
         toolTip.style("opacity", 1)
                 .html("Indicator: " + d.data.Indicator + "<br/>" + "Value: " + d.data.Value)
@@ -68,7 +68,7 @@ var everything = function(d) {
                 .attr("id", "bubble");
 
     var nodes = d3.hierarchy(raw)
-        .sum(function(d) { 
+        .sum(function(d) {
             return d.Value; });
 
     var node = svg.selectAll(".node")
@@ -100,7 +100,7 @@ var everything = function(d) {
         .on('click', function(d) {
             //info for bar chart
             console.log(d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race);
-        
+
             return[d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race];
         })
         .on('mouseover', function(d) {
@@ -149,4 +149,3 @@ var everything = function(d) {
     d3.select(self.frameElement)
         .style("height", diameter + "px");
 };
-
