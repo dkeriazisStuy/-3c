@@ -1,11 +1,25 @@
 var raw = [];
+var body = d3.select('#filter');
+var table = body.append("table");
+var keys = ["Year", "Gender", "Race", "Place"];
 d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
     // var b = d3.select('#filter').select('button');
     // console.log('b');
     // console.log(b);
     // console.log('b');
 
-    var body = d3.select('#filter');
+    for (var i = 0; i < keys.length; i++){
+        row = table.append('tr');
+        row.append('td').text(keys[i]);
+        var selection = row.append('td').append('select')
+            .attr('class', 'select')
+            .attr('name', keys[i])
+        var options = selection.selectAll('option');
+        options.data(getChoices(data, keys[i])).enter()
+            .append('option')
+            .text(function(d){ return d; })
+    };
+
     var b = body.append('button')
         .attr('type', 'button')
         .attr('id', 'button')
@@ -19,9 +33,13 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
         };
         d3.select(".bubble").remove();
         everything();
-        grap(dset);
-
+        //grap(dset);
     });
+
+    var chart = d3.select('body')
+        chart.append('br')
+        chart.append('table')
+            .attr('id', 'chart');
 });
 
 var everything = function(d) {
@@ -90,8 +108,10 @@ var everything = function(d) {
     //        return d.data.Name + ": " + d.value;
     //    });
 
-    node.append("circle")
-        .attr("r", function(d) {
+    var circles = node.append("circle")
+        .transition().duration(400);
+        
+    circles.attr("r", function(d) {
             if(isNaN(d.r)) {
                 console.log("Data doesn't exist in dataset!");
             } else {
@@ -102,8 +122,9 @@ var everything = function(d) {
             return color(i);
         })
         .attr("stroke", "black")
-        .attr("stroke-width", 0)
-        .on('click', function(d) {
+        .attr("stroke-width", 0);
+    bub = d3.selectAll("circle");
+    bub.on('click', function(d) {
             //info for bar chart
             console.log(d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race);
 
@@ -133,14 +154,14 @@ var everything = function(d) {
         .style("text-anchor", "middle")
         .text(function(d) {
             try {
-                return d.data.Indicator.substring(0, d.r / 5);
+                return d.data.Indicator.substring(0, d.r / 4);
             } catch (e) {
                 console.log("Data doesn't exist in dataset!");
             }
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", function(d){
-            return d.r/3;
+            return d.r/5;
         })
         .attr("fill", "white");
 
