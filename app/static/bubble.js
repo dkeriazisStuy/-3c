@@ -108,8 +108,10 @@ var everything = function(d) {
     //        return d.data.Name + ": " + d.value;
     //    });
 
-    node.append("circle")
-        .attr("r", function(d) {
+    var circles = node.append("circle")
+        .transition().duration(400);
+        
+    circles.attr("r", function(d) {
             if(isNaN(d.r)) {
                 console.log("Data doesn't exist in dataset!");
             } else {
@@ -120,8 +122,9 @@ var everything = function(d) {
             return color(i);
         })
         .attr("stroke", "black")
-        .attr("stroke-width", 0)
-        .on('click', function(d) {
+        .attr("stroke-width", 0);
+    bub = d3.selectAll("circle");
+    bub.on('click', function(d) {
             //info for bar chart
             console.log(d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race);
 
@@ -151,14 +154,14 @@ var everything = function(d) {
         .style("text-anchor", "middle")
         .text(function(d) {
             try {
-                return d.data.Indicator.substring(0, d.r / 5);
+                return d.data.Indicator.substring(0, d.r / 4);
             } catch (e) {
                 console.log("Data doesn't exist in dataset!");
             }
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", function(d){
-            return d.r/3;
+            return d.r/5;
         })
         .attr("fill", "white");
 
