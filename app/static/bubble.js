@@ -20,19 +20,6 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
                 d3.select(".bubble").remove();
                 everything();
     });
-    var test = {
-        "children": [{"Name":"HIV","Count":0.0304},
-            {"Name":"AIDS","Count":0.0785},
-            {"Name":"Cancer","Count":0.1958},
-            {"Name":"Injury","Count":0.0088},
-            {"Name":"Tuberculosis","Count":0.0035},
-            {"Name":"Heart Disease","Count":0.156},
-            {"Name":"Diabetes","Count":0.0143},
-            {"Name":"Pneumonia","Count":0.0119},
-            {"Name":"Firearm Related","Count":0.0137},
-            {"Name":"Homicide","Count":0.0116}]
-        };
-    console.log(test);
 });
 
 var everything = function(d) {
@@ -110,7 +97,8 @@ var everything = function(d) {
         .attr("stroke", "black")
         .attr("stroke-width", 0)
         .on('click', function(d) {
-            console.log(d.data.Indicator);
+            //info for bar chart
+            return[d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race];
         })
         .on('mouseover', function(d) {
             d3.select(this)

@@ -1,6 +1,6 @@
 var body = d3.select('#filter');
 var table = body.append("table");
-var keys = ["Year", "Gender", "Race/ Ethnicity", "Place"];
+var keys = ["Year", "Gender", "Race", "Place"];
 
 d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
 
