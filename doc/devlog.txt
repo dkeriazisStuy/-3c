@@ -19,14 +19,22 @@ huiminW -- 2019-04-01 23:29
 Updated README to address add rev_B issues
 ---------------------------------------------------------------
 
+shafaliG -- 2019-04-01 16:15
+---------------------------------------------------------------
+Updated README
+---------------------------------------------------------------
+
 huiminW -- 2019-04-02 02:04
 ---------------------------------------------------------------
-Added a small bubble example that doesn't work yet. 
+Added a small bubble example that doesn't work yet.
 The bubbles appear in the html but their radii are still NaN
 and I think that is due to my confusion with children and how the
 data is translated to values to layout the bubble
 ---------------------------------------------------------------
-
+shafaliG -- 2019-04-02 23:29
+---------------------------------------------------------------
+Looked into how to make bar chart. Made tester data.
+---------------------------------------------------------------
 huiminW -- 2019-04-02 13:51
 ---------------------------------------------------------------
 Finish working bubble example
@@ -54,6 +62,10 @@ Grouped bubble chart and filter together in flask app with PM DK
 Made new css file in static
 Moved html and js files to static
 Aligned filter to the left and bubbles to the right
+---------------------------------------------------------------
+shafaliG -- 2019-04-04 16:30
+---------------------------------------------------------------
+Bar Chart is fully functional with tester data. Waiting for the piping of data.
 ---------------------------------------------------------------
 
 huiminW -- 2019-04-04 22:31
