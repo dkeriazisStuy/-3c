@@ -48,7 +48,6 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
         };
         d3.select(".bubble").remove();
         everything();
-        //grap(dset);
     });
 
     var chart = d3.select('body')
@@ -171,14 +170,22 @@ var everything = function(d) {
         .style("text-anchor", "middle")
         .text(function(d) {
             try {
-                return d.data.Indicator.substring(0, d.r / 4);
+                if(d.r > 150) {
+                    return d.data.Indicator.substring(0, d.r / 15);
+                } else {
+                    return d.data.Indicator.substring(0, d.r / 4);
+                }
             } catch (e) {
                 console.log("Data doesn't exist in dataset!");
             }
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", function(d){
-            return d.r/5;
+            if(d.r >  100){
+                return d.r/5;
+            }else{
+                return d.r/3.5;
+            }
         })
         .attr("fill", "white");
 
