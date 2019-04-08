@@ -23,7 +23,7 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
 });
 
 var everything = function(d) {
-    var toolTip = d3.select('.bubble')
+    var toolTip = d3.select('#bubble')
                     .append("tip")
                     .style("opacity", 0)
                     .attr("class", "tooltip")
@@ -64,7 +64,8 @@ var everything = function(d) {
                 .append("svg")
                 .attr("width", diameter)
                 .attr("height", diameter)
-                .attr("class", "bubble");
+                .attr("class", "bubble")
+                .attr("id", "bubble");
 
     var nodes = d3.hierarchy(raw)
         .sum(function(d) { 
@@ -98,6 +99,8 @@ var everything = function(d) {
         .attr("stroke-width", 0)
         .on('click', function(d) {
             //info for bar chart
+            console.log(d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race);
+        
             return[d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race];
         })
         .on('mouseover', function(d) {
@@ -123,7 +126,7 @@ var everything = function(d) {
         .attr("dy", ".2em")
         .style("text-anchor", "middle")
         .text(function(d) {
-            return d.data.Indicator;//.substring(0, d.r / 3);
+            return d.data.Indicator.substring(0, d.r / 5);
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", function(d){
