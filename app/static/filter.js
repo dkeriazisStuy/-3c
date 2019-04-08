@@ -31,7 +31,7 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
 
 // get filtered data
 var getData = function(data){
-    var filters = table.selectAll('select');
+    var filters = body.select('table').selectAll('select');
     var values = [];
     var results = data.slice(0);
 
@@ -44,6 +44,7 @@ var getData = function(data){
             results = filter(results, keys[i], values[i]);
         }
     }
+    console.log(results);
     return results;
 };
 
