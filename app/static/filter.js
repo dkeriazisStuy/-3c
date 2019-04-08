@@ -18,14 +18,15 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
     };
 
     // submit button
-    body.append('br');
-    var b = body.append('button')
-        .attr('type', 'button')
-        .attr('id', 'button')
-        .text('Submit1')
-        .on('click', function(){
-            return getData(data);
-        });
+    // body.append('br');
+    // var b = body.append('button')
+    //     .attr('type', 'button')
+    //     .attr('id', 'button')
+    //     .text('Submit')
+    //     .on('click', function(){
+    //         console.log('reeeeeee');
+    //         return getData(data);
+    //     });
 });
 
 // get filtered data

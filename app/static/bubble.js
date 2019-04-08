@@ -1,15 +1,21 @@
+var raw = [];
 d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) { 
+    // var b = d3.select('#filter').select('button');
+    // console.log('b');
+    // console.log(b);
+    // console.log('b');
+    
     var body = d3.select('#filter');
-    body.append('br');
     var b = body.append('button')
                 .attr('type', 'button')
                 .attr('id', 'button')
                 .text('Submit')
                 .on('click', function() {
-                    return getData(data);
+                    raw = getData(data).slice(0);
+                    console.log('??');
+                    //console.log(raw);
                 });
-    console.log("b:")
-    console.log(b)
+
     dataset = {
     "children": [{"Name":"HIV","Count":0.0304},
         {"Name":"AIDS","Count":0.0785},
@@ -142,3 +148,4 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
     d3.select(self.frameElement)
         .style("height", diameter + "px");
 });
+
