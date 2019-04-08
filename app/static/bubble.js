@@ -90,7 +90,11 @@ var everything = function(d) {
 
     node.append("circle")
         .attr("r", function(d) {
-            return d.r;
+            if(isNaN(d.r)) {
+                console.log("Data doesn't exist in dataset!");
+            } else {
+                return d.r;
+            }
         })
         .style("fill", function(d, i){
             return color(i);
@@ -126,7 +130,11 @@ var everything = function(d) {
         .attr("dy", ".2em")
         .style("text-anchor", "middle")
         .text(function(d) {
-            return d.data.Indicator.substring(0, d.r / 5);
+            try {
+                return d.data.Indicator.substring(0, d.r / 5);
+            } catch (e) {
+                console.log("Data doesn't exist in dataset!");
+            }
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", function(d){
