@@ -7,18 +7,20 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
 
     var body = d3.select('#filter');
     var b = body.append('button')
-                .attr('type', 'button')
-                .attr('id', 'button')
-                .text('Submit')
-                .on('click', function() {
-                    dset = getData(data).slice(0);
-                    //console.log('??');
-                  //  console.log(dset);
-                raw = {
-                    "children": dset
-                };
-                d3.select(".bubble").remove();
-                everything();
+        .attr('type', 'button')
+        .attr('id', 'button')
+        .text('Submit')
+        .on('click', function() {
+            dset = getData(data).slice(0);
+            //console.log('??');
+          //  console.log(dset);
+        raw = {
+            "children": dset
+        };
+        d3.select(".bubble").remove();
+        everything();
+        yee(raw);
+
     });
 });
 
