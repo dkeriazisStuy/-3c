@@ -27,7 +27,7 @@ var grap = function(indic){
             //console.log(d);
             //console.log("values")
             //console.log(d.Value);
-            for (var i = 0; i<d.Value.length; i++){
+            for (var i = 0; i<11; i++){
                 if (d.Indicator= indic)
                     va+= d.Value
                 //console.log(va);
