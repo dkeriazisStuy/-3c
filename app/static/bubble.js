@@ -19,7 +19,7 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
         };
         d3.select(".bubble").remove();
         everything();
-        yee(raw);
+        grap(dset);
 
     });
 });

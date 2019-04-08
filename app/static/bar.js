@@ -30,7 +30,7 @@ var grap = function(indic){
             for (var i = 0; i<d.Value.length; i++){
                 if (d.Indicator= indic)
                     va+= d.Value
-                console.log(va);
+                //console.log(va);
             }
             //d.Value = +d.Value;
 
