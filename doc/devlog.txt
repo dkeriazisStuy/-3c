@@ -108,3 +108,9 @@ shafaliG, huiminW, jackLu -- 2019-04-08 1:35
 ---------------------------------------------------------------
 Made plan of what to do if we can't get bars to work and how to have a working project. 
 ---------------------------------------------------------------
+
+jackLu -- 2019-04-08 16:38
+---------------------------------------------------------------
+Completed table displaying individual study data
+Project complete
+---------------------------------------------------------------

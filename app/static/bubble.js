@@ -4,17 +4,28 @@ var table = body.append("table");
 var keys = ["Year", "Gender", "Race", "Place"];
 
 var graphData = function(data){
-    console.log(data);
-    console.log(data.Category);
-    console.log(data.Indicator);
-    console.log(data.Year);
-    console.log(data.Value);
+    var k = Object.keys(data);
     var chart = d3.select('body').select('#chart')
-    chart.append('tr')
-        .append('td').text('BCHC Requested Methodology')
-        .append('td').text(data['BCHC Requested Methodology'])
-        .append('td').text('Value')
-        .append('td').text(data.Value)
+        .attr('width', '1000');
+    chart.html("");
+    for (var i = 0; i < k.length; i++){
+        var row = chart.append('tr');
+        row.append('td').text(k[i])
+            .style('border', '1px solid #000000');
+        row.append('td').text(data[k[i]])
+            .style('border', '1px solid #000000');
+    }
+    //console.log(data.Category);
+    //console.log(data.Indicator);
+    //console.log(data.Year);
+    //console.log(data.Value);
+    //var chart = d3.select('body').select('#chart')
+    //chart.append('tr')
+    //    .append('td').text('BCHC Requested Methodology')
+    //    .append('td').text(data['BCHC Requested Methodology'])
+    //chart
+    //    .append('td').text('Value')
+    //    .append('td').text(data.Value)
 };
 
 d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
@@ -51,7 +62,6 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
     });
 
     var chart = d3.select('body')
-        chart.append('br')
         chart.append('table')
             .attr('id', 'chart');
 });
@@ -70,7 +80,7 @@ var everything = function(d) {
     var showTooltip = function(d) {
         //console.log(d)
         toolTip.transition().duration(200)
-        toolTip.style("opacity", 1)
+        toolTip.style("opacity", 0)
                 .html("Indicator: " + d.data.Indicator + "<br/>" + "Value: " + d.data.Value)
                 .style("left", d3.event.pageX + 20 + "px")
                 .style("top", d3.event.pageY + 20 + "px")
