@@ -2,6 +2,21 @@ var raw = [];
 var body = d3.select('#filter');
 var table = body.append("table");
 var keys = ["Year", "Gender", "Race", "Place"];
+
+var graphData = function(data){
+    console.log(data);
+    console.log(data.Category);
+    console.log(data.Indicator);
+    console.log(data.Year);
+    console.log(data.Value);
+    var chart = d3.select('body').select('#chart')
+    chart.append('tr')
+        .append('td').text('BCHC Requested Methodology')
+        .append('td').text(data['BCHC Requested Methodology'])
+        .append('td').text('Value')
+        .append('td').text(data.Value)
+};
+
 d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data) {
     // var b = d3.select('#filter').select('button');
     // console.log('b');
@@ -128,7 +143,9 @@ var everything = function(d) {
             //info for bar chart
             console.log(d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race);
 
-            return[d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race];
+            graphData(d.data);
+            //graphData([d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race]);
+            //return[d.data.Indicator, d.data.Year, d.data.Gender, d.data.Race];
         })
         .on('mouseover', function(d) {
             d3.select(this)
@@ -180,3 +197,4 @@ var everything = function(d) {
     d3.select(self.frameElement)
         .style("height", diameter + "px");
 };
+

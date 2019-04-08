@@ -1,6 +1,3 @@
-var grap = function(data){
-    console.log(data);
-}
 
 // var svg = d3.select("#bar"),
 //     margin = {
