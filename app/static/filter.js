@@ -22,12 +22,11 @@ d3.csv("./static/Big_Cities_Health_Data_Inventory.csv").then(function(data){
     var b = body.append('button')
         .attr('type', 'button')
         .attr('id', 'button')
-        .text('Submit')
+        .text('Submit1')
         .on('click', function(){
             return getData(data);
         });
 });
-
 
 // get filtered data
 var getData = function(data){
@@ -44,6 +43,7 @@ var getData = function(data){
             results = filter(results, keys[i], values[i]);
         }
     }
+    //console.log(results);
     return results;
 };
 
